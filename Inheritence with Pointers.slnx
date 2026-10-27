@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Inheritence with Pointers.vcxproj" Id="0c705784-1093-46c6-bb4a-325ff1d5df0a" />
+</Solution>
