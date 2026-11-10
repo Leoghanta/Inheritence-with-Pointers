@@ -18,16 +18,38 @@ BasePokemon* Wortortle::evolve(BasePokemon& p) const {
 	return b;
 }
 
-void Wortortle::quickAttack() const {
-	std::cout << name << " uses Water Gun!" << std::endl;
+void Wortortle::quickAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Water Gun against " << p->getName() << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
 
-void Wortortle::quickAttack(int damage) const {
-	std::cout << name << " uses Water Gun causing " << damage << " damage!" << std::endl;
+void Wortortle::quickAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Water Gun against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void Wortortle::specialAttack() const {
-	std::cout << name << " uses Aqua Jet!" << std::endl;
+
+void Wortortle::specialAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void Wortortle::specialAttack(int damage) const {
-	std::cout << name << " uses Aqua Jet causing " << damage << " damage!" << std::endl;
+
+void Wortortle::specialAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }

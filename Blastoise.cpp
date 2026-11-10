@@ -12,16 +12,39 @@ BasePokemon* Blastoise::evolve(BasePokemon& p) const {
 	return &p;
 }
 
-void Blastoise::quickAttack() const {
-	std::cout << name << " uses Skull Bash!" << std::endl;
+void Blastoise::quickAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Skull Bash against " << p->getName() << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
 
-void Blastoise::quickAttack(int damage) const {
-	std::cout << name << " uses Skull Bash causing " << damage << " damage!" << std::endl;
+void Blastoise::quickAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Skull Bash against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void Blastoise::specialAttack() const {
-	std::cout << name << " uses Hydro Cannon!" << std::endl;
+
+void Blastoise::specialAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Hydro Cannon against " << p->getName() << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void Blastoise::specialAttack(int damage) const {
-	std::cout << name << " uses Hydro Cannon causing " << damage << " damage!" << std::endl;
+
+void Blastoise::specialAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Hydro Cannon against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
+

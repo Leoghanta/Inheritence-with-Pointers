@@ -4,7 +4,7 @@
 
 //Constructor and Destructors
 BasePokemon::BasePokemon(const std::string& name, const std::string& type, int level)
-	: name(name), type(type), level(level) {}
+	: name(name), type(type), level(level), health(10), damage(15), armour(10) {}
 				
 BasePokemon::~BasePokemon() {
 	//std::cout << "BasePokemon " << name << " destroyed." << std::endl;
@@ -35,6 +35,18 @@ void BasePokemon::setLevel(int level) {
 	this->level = level;
 }
 
+void BasePokemon::takeDamage(int damage) {
+	this->health = health - damage;
+	if (health < 0) {
+		health = 0;
+		std::cout << "You killed " << name << " You bastards!" << std::endl;
+	}
+}
+
+int BasePokemon::getHealth() const {
+	return health;
+}
+
 //Other Methods
 void BasePokemon::displayInfo() const {
 	std::cout << "Name: " << name << std::endl;
@@ -47,16 +59,76 @@ BasePokemon *BasePokemon::evolve(BasePokemon &p) const {
 	return &p;
 }
 
+int BasePokemon::calculateDamage(BasePokemon* p) const {
+	if (this->getType() == p->getType()) {
+		return this->damage;
+	}
+	if (this->getType() == "Water") {
+		if (p->getType() == "Fire") {
+			return this->damage / 2;
+		}
+		if (p->getType() == "Grass") {
+			return this->damage * 2;
+		}
+	}
+
+	if (this->getType() == "Fire") {
+		if (p->getType() == "Water") {
+			return this->damage * 2;
+		}
+		if (p->getType() == "Grass") {
+			return this->damage / 2;
+		}
+	}
+
+	if (this->getType() == "Grass") {
+		if (p->getType() == "Water") {
+			return this->damage * 2;
+		}
+		if (p->getType() == "Fire") {
+			return this->damage / 2;
+		}
+	}
+
+	return this->damage;
+
+}
+
 //Attacks
-void BasePokemon::quickAttack() const {
-	std::cout << name << " uses Quick Attack" << std::endl;
+void BasePokemon::quickAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Quick Attack against " << p->getName() << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void BasePokemon::quickAttack(int damage) const {
-	std::cout << name << " uses Quick Attack causing " << damage << " damage!" << std::endl;
+
+void BasePokemon::quickAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Quick Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void BasePokemon::specialAttack() const {
-	std::cout << name << " uses Special Attack" << std::endl;
+
+void BasePokemon::specialAttack(BasePokemon* p) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Special Attack against " << p->getName() << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
-void BasePokemon::specialAttack(int damage) const {
-	std::cout << name << " uses Special Attack causing " << damage << " damage!" << std::endl;
+
+void BasePokemon::specialAttack(BasePokemon* p, int damage) const {
+	if (p->getHealth() <= 0) {
+		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
+		return;
+	}
+	std::cout << getName() << " uses Special Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+	p->takeDamage(calculateDamage(p));
 }
+
+

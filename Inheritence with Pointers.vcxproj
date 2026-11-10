@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BasePokemon.cpp" />
+    <ClCompile Include="Charmander.cpp" />
     <ClCompile Include="Inheritence with Pointers.cpp" />
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="Squirtle.cpp" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="BasePokemon.h" />
     <ClInclude Include="Blastoise.h" />
+    <ClInclude Include="Charmander.h" />
     <ClInclude Include="Squirtle.h" />
     <ClInclude Include="Wortortle.h" />
   </ItemGroup>

@@ -10,8 +10,8 @@ public:
 
 	BasePokemon* evolve(BasePokemon& p) const override;
 
-	void quickAttack() const override;
-	void quickAttack(int damage) const override;
-	void specialAttack() const override;
-	void specialAttack(int damage) const override;
+	void quickAttack(BasePokemon* p) const override;
+	void quickAttack(BasePokemon* p, int damage) const override;
+	void specialAttack(BasePokemon* p) const override;
+	void specialAttack(BasePokemon* p, int damage) const override;
 };

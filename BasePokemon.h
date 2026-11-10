@@ -7,6 +7,9 @@ protected:
 	std::string name;
 	std::string type;
 	int level;
+	int health;
+	int damage;
+	int armour;
 
 public:
 	//Constructor and Destructors
@@ -20,17 +23,19 @@ public:
 	void setName(const std::string& name);
 	void setType(const std::string& type);
 	void setLevel(int level);
+	void takeDamage(int damage);
+	int getHealth() const;
 
 	//Other Methods
 	void displayInfo() const;
 	virtual BasePokemon *evolve(BasePokemon &p) const;
+	int calculateDamage(BasePokemon* p) const;
 
 	//attacks
-	virtual void quickAttack() const;
-	virtual void quickAttack(int damage) const;
-	virtual void specialAttack() const;
-	virtual void specialAttack(int damage) const;
-
+	virtual void quickAttack(BasePokemon* p) const;
+	virtual void quickAttack(BasePokemon* p, int damage) const;
+	virtual void specialAttack(BasePokemon* p) const;
+	virtual void specialAttack(BasePokemon* p, int damage) const;
 
 };
 

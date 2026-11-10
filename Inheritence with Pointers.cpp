@@ -2,27 +2,22 @@
 #include "Squirtle.h"
 #include "Wortortle.h"
 #include "Blastoise.h"
+#include "Charmander.h"
 
 int main()
 {
-    BasePokemon *p = new Squirtle("Squirtle", 8);
-    p->displayInfo();
-    p->quickAttack();
-    p->specialAttack(15);
-    p->setLevel(16);
+    BasePokemon* p = new Squirtle("Squirtle", 8);
+    BasePokemon* p2 = new Charmander("Charmander", 8);
 
-    //Evolve
-    p = p->evolve(*p);
-    p->displayInfo();
-    p->quickAttack();
-    p->specialAttack(24);
-    p->setLevel(32);
+    p->quickAttack(p2);
+    p2->quickAttack(p);
 
-    //Now evolve again.
-    p = p->evolve(*p);
-    p->displayInfo();
-    p->quickAttack(18);
-    p->specialAttack();
+    p->specialAttack(p2);
+    p2->specialAttack(p);
+
+
+    delete p;
+    delete p2;
 
     return 0;
 }
