@@ -6,6 +6,7 @@ class BasePokemon
 protected:
 	std::string name;
 	std::string type;
+	int experience;
 	int level;
 	int health;
 	int damage;
@@ -29,6 +30,7 @@ public:
 	//Other Methods
 	void displayInfo() const;
 	virtual BasePokemon *evolve(BasePokemon &p) const;
+	bool canAttack(BasePokemon* p) const;
 	int calculateDamage(BasePokemon* p) const;
 
 	//attacks

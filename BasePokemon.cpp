@@ -94,41 +94,45 @@ int BasePokemon::calculateDamage(BasePokemon* p) const {
 
 }
 
-//Attacks
-void BasePokemon::quickAttack(BasePokemon* p) const {
+bool BasePokemon::canAttack(BasePokemon* p) const {
+	if (getHealth() <= 0) {
+		std::cout << name << " is dead and can't attack" << std::endl;
+		return false;
+	}
 	if (p->getHealth() <= 0) {
 		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+		return false;
 	}
-	std::cout << getName() << " uses Quick Attack against " << p->getName() << std::endl;
-	p->takeDamage(calculateDamage(p));
+	return true;
+}
+
+//Attacks
+void BasePokemon::quickAttack(BasePokemon* p) const {
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Quick Attack against " << p->getName() << std::endl;
+		p->takeDamage(calculateDamage(p));
+	}
 }
 
 void BasePokemon::quickAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Quick Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Quick Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 void BasePokemon::specialAttack(BasePokemon* p) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Special Attack against " << p->getName() << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Special Attack against " << p->getName() << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 void BasePokemon::specialAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Special Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Special Attack against " << p->getName() << " causing " << damage << " damage!" << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 

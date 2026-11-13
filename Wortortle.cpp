@@ -19,37 +19,29 @@ BasePokemon* Wortortle::evolve(BasePokemon& p) const {
 }
 
 void Wortortle::quickAttack(BasePokemon* p) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Water Gun against " << p->getName() << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Water Gun against " << p->getName() << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 void Wortortle::quickAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Water Gun against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(damage);
 	}
-	std::cout << getName() << " uses Water Gun against " << p->getName() << " causing " << damage << " damage!" << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 void Wortortle::specialAttack(BasePokemon* p) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
-	p->takeDamage(calculateDamage(p));
 }
 
 void Wortortle::specialAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(damage);
 	}
-	std::cout << getName() << " uses Aqua Jet against " << p->getName() << " causing " << damage << " damage!" << std::endl;
-	p->takeDamage(calculateDamage(p));
 }

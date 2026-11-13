@@ -20,33 +20,29 @@ BasePokemon* Squirtle::evolve(BasePokemon &p) const {
 }
 
 void Squirtle::quickAttack(BasePokemon* p) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Bubble against " << p->getName() << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Bubble against " << p->getName() << std::endl;
 }
 
 void Squirtle::quickAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Bubble against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(damage);
 	}
-	std::cout << getName() << " uses Bubble against " << p->getName() << " causing " << damage << " damage!" << std::endl;
 }
 
 void Squirtle::specialAttack(BasePokemon* p) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Hydro Pump against " << p->getName() << std::endl;
+		p->takeDamage(calculateDamage(p));
 	}
-	std::cout << getName() << " uses Hydro Pump against " << p->getName() << std::endl;
 }
 
 void Squirtle::specialAttack(BasePokemon* p, int damage) const {
-	if (p->getHealth() <= 0) {
-		std::cout << getName() << " beats the corpse of " << p->getName() << std::endl;
-		return;
+	if (canAttack(p)) {
+		std::cout << getName() << " uses Hydro Pump against " << p->getName() << " causing " << damage << " damage!" << std::endl;
+		p->takeDamage(damage);
 	}
-	std::cout << getName() << " uses Hydro Pump against " << p->getName() << " causing " << damage << " damage!" << std::endl;
 }
