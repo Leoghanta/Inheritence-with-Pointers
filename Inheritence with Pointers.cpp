@@ -3,6 +3,7 @@
 #include "Wortortle.h"
 #include "Blastoise.h"
 #include "Charmander.h"
+#include "Eevee.h"
 
 int main()
 {
@@ -15,9 +16,19 @@ int main()
     p->specialAttack(p2);
     p2->specialAttack(p);
 
+    p->heal(10);
+
+    p->specialAttack(p2);
+    p2->specialAttack(p);
+
 
     delete p;
     delete p2;
+
+    BasePokemon* pokemon = new Eevee("Eevee", 8);
+    pokemon = pokemon->evolve(*pokemon);
+    pokemon->displayInfo();
+    delete pokemon;
 
     return 0;
 }

@@ -33,6 +33,18 @@
     <ClCompile Include="Charmander.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Eevee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jolteon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vaporeon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Flareon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasePokemon.h">
@@ -48,6 +60,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Charmander.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Eevee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jolteon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vaporeon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Flareon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

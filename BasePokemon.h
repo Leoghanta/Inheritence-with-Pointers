@@ -9,6 +9,7 @@ protected:
 	int experience;
 	int level;
 	int health;
+	int maxHealth;
 	int damage;
 	int armour;
 
@@ -25,6 +26,7 @@ public:
 	void setType(const std::string& type);
 	void setLevel(int level);
 	void takeDamage(int damage);
+	void heal(int amount);
 	int getHealth() const;
 
 	//Other Methods
@@ -32,6 +34,7 @@ public:
 	virtual BasePokemon *evolve(BasePokemon &p) const;
 	bool canAttack(BasePokemon* p) const;
 	int calculateDamage(BasePokemon* p) const;
+
 
 	//attacks
 	virtual void quickAttack(BasePokemon* p) const;

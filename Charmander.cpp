@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Constructors and Destructors
-Charmander::Charmander(const std::string& name, int level) : BasePokemon(name, "Water", level) {}
+Charmander::Charmander(const std::string& name, int level) : BasePokemon(name, "Fire", level) {}
 
 Charmander::~Charmander() {
 	//std::cout << getName() << " has been destroyed." << std::endl;

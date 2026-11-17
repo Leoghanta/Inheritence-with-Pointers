@@ -141,16 +141,24 @@
   <ItemGroup>
     <ClCompile Include="BasePokemon.cpp" />
     <ClCompile Include="Charmander.cpp" />
+    <ClCompile Include="Eevee.cpp" />
     <ClCompile Include="Inheritence with Pointers.cpp" />
     <ClCompile Include="Blastoise.cpp" />
+    <ClCompile Include="Jolteon.cpp" />
+    <ClCompile Include="Flareon.cpp" />
     <ClCompile Include="Squirtle.cpp" />
+    <ClCompile Include="Vaporeon.cpp" />
     <ClCompile Include="Wortortle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasePokemon.h" />
     <ClInclude Include="Blastoise.h" />
     <ClInclude Include="Charmander.h" />
+    <ClInclude Include="Eevee.h" />
+    <ClInclude Include="Flareon.h" />
+    <ClInclude Include="Jolteon.h" />
     <ClInclude Include="Squirtle.h" />
+    <ClInclude Include="Vaporeon.h" />
     <ClInclude Include="Wortortle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

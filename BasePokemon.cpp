@@ -4,7 +4,9 @@
 
 //Constructor and Destructors
 BasePokemon::BasePokemon(const std::string& name, const std::string& type, int level)
-	: name(name), type(type), level(level), health(10), damage(15), armour(10) {}
+	: name(name), type(type), level(level), health(80), damage(15), armour(0), experience(0) {
+	maxHealth = health;
+}
 				
 BasePokemon::~BasePokemon() {
 	//std::cout << "BasePokemon " << name << " destroyed." << std::endl;
@@ -41,6 +43,9 @@ void BasePokemon::takeDamage(int damage) {
 		health = 0;
 		std::cout << "You killed " << name << " You bastards!" << std::endl;
 	}
+	else {
+		std::cout << "\t\t\t\t\t" << getName() << "(" << getHealth() << "/" << maxHealth << ")" << std::endl;
+	}
 }
 
 int BasePokemon::getHealth() const {
@@ -63,29 +68,48 @@ int BasePokemon::calculateDamage(BasePokemon* p) const {
 	if (this->getType() == p->getType()) {
 		return this->damage;
 	}
+
 	if (this->getType() == "Water") {
-		if (p->getType() == "Fire") {
-			return this->damage / 2;
-		}
-		if (p->getType() == "Grass") {
+		//super effective
+		if (p->getType() == "Fire" || p->getType() == "Ground" || p->getType() == "Rock") {
 			return this->damage * 2;
+		}
+		//not very effective
+		if (p->getType() == "Water" || p->getType() == "Grass" || p->getType() == "Dragon") {
+			return this->damage / 2;
 		}
 	}
 
 	if (this->getType() == "Fire") {
-		if (p->getType() == "Water") {
+		//super effective
+		if (p->getType() == "Grass" || p->getType() == "Ice" || p->getType() == "Bug" || p->getType() == "Steel") {
 			return this->damage * 2;
 		}
-		if (p->getType() == "Grass") {
+		//not very effective
+		if (p->getType() == "Fire" || p->getType() == "Water" || p->getType() == "Rock" || p->getType() == "Dragon") {
 			return this->damage / 2;
 		}
 	}
 
 	if (this->getType() == "Grass") {
-		if (p->getType() == "Water") {
+		//super effective
+		if (p->getType() == "Grouns" || p->getType() == "Water" || p->getType() == "Rock") {
 			return this->damage * 2;
 		}
-		if (p->getType() == "Fire") {
+
+		if (p->getType() == "Fire" || p->getType() == "Grass" || p->getType() == "Poison" || p->getType() == "Flying" || 
+			p->getType() == "Bug" || p->getType() == "Dragon" || p->getType() == "Steel") {
+			return this->damage / 2;
+		}
+	}
+
+	if (this->getType() == "Electric") {
+		//super effective
+		if (p->getType() == "Water" || p->getType() == "Flying") {
+			return this->damage * 2;
+		}
+		// not very effective
+		if (p->getType() == "Electric" || p->getType() == "Grass" || p->getType() == "Dragon") {
 			return this->damage / 2;
 		}
 	}
@@ -104,6 +128,18 @@ bool BasePokemon::canAttack(BasePokemon* p) const {
 		return false;
 	}
 	return true;
+}
+
+void BasePokemon::heal(int amount) {
+	this->health = getHealth() + amount;
+	if (health >= maxHealth) {
+		health = maxHealth;
+		std::cout << getName() << " is fully healed!" << std::endl;
+	}
+	else {
+		std::cout << getName() << " used a potion to heal." << std::endl;
+	}
+	
 }
 
 //Attacks
