@@ -28,7 +28,7 @@ int Battle::getChoice(int min, int max) const {
                 return choice;
             }
             else {
-                std::cout << "Value out of range between " << min << " and " << max << "Try again: ";
+                std::cout << "Value out of range between " << min << " and " << max << "! Try again: ";
             }
         }
         catch (const std::invalid_argument&) {
@@ -122,8 +122,9 @@ void Battle::runBattle() const {
     delete opponent;
 }
 
+
 void Battle::start() const {
-    std::srand(static_cast<unsigned>(std::time(nullptr)));
+    std::srand(std::time(0)); //seed my random
     do {
         runBattle();
         if (!std::cin) return;
