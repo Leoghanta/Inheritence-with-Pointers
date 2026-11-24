@@ -45,6 +45,9 @@
     <ClCompile Include="Flareon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasePokemon.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Flareon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
